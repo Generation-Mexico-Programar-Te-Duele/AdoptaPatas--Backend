@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS `adoptapatas`.`user` (
   `first_name` VARCHAR(65) NOT NULL,
   `last_name` VARCHAR(65) NOT NULL,
   `username` VARCHAR(50) NOT NULL,
+  `age` INT NOT NULL,
   `email` VARCHAR(60) NOT NULL,
   `phone` VARCHAR(16) NOT NULL,
   `password_hash` VARCHAR(45) NOT NULL,

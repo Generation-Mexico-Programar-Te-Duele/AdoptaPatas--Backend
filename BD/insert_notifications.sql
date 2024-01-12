@@ -13,4 +13,4 @@ INSERT INTO notification (user_id, message_id, notification_type, is_read)
 		VALUES (8, 4, "Te ha mandado un mensaje!", 0);
 
 INSERT INTO notification (user_id, message_id, notification_type, is_read)
-		VALUES (4, 8, "Te ha mandado un mensaje!", 1);
+		VALUES (4, 3, "Te ha mandado un mensaje!", 1);
