@@ -41,16 +41,6 @@ public class Pet {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateAdded;
 	
-	// Creación de la tabla follower a partir de @JoinTable con @JoinColumn para atribuir
-	// nombres a las columnas 
-	
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(joinColumns = { @JoinColumn(name = "following_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "followers_id") })
-	private Set<User> following;
-
-	@ManyToMany(mappedBy = "following", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	private Set<User> followers;
 	
 	@ManyToOne
 	@JoinColumn(name="pet_user_id",referencedColumnName = "id", nullable=false )

@@ -58,6 +58,16 @@ public class User {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Timestamp birthDate;
 	
+	// Creación de la tabla follower a partir de @JoinTable con @JoinColumn para atribuir
+	// nombres a las columnas 
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(joinColumns = { @JoinColumn(name = "following_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "followers_id") })
+	private Set<User> following;
+
+	@ManyToMany(mappedBy = "following", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	private Set<User> followers;
 	
 	// Un usuario puede publicar muchas mascotas
 	// Relacion Bidireccional con "pet"
