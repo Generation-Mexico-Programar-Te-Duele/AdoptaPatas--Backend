@@ -29,15 +29,18 @@ public class Notification {
 
     @ManyToOne
     @JoinColumn(name = "source_user_id", referencedColumnName = "id")
-    private User sourceUser;
+    private User sourceUser; // who initiated the action
 
     @ManyToOne
     @JoinColumn(name = "post_id", referencedColumnName = "id")
     private Post post;
 
     @ManyToOne
-    @JoinColumn(name = "comment_id", referencedColumnName = "comment_id")
+    @JoinColumn(name = "comment_id", referencedColumnName = "id")
     private Comment comment;
+    
+    @Column(name = "is_readed", nullable = false)
+    private boolean isReaded;
 
     @Column(name = "received_at",columnDefinition="DATETIME DEFAULT CURRENT_TIMESTAMP")
 	@Temporal(TemporalType.TIMESTAMP)

@@ -1,6 +1,7 @@
 package org.programarteduele.app.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -31,5 +32,11 @@ public class Post {
 	
 	@Column(name="image", length=255)
 	private String postImage;
+	
+	@OneToMany(mappedBy = "post")
+    private List<PostLike> postLikes;
+	
+    @OneToMany(mappedBy = "post")
+    private List<Comment> postComments;
 
 }

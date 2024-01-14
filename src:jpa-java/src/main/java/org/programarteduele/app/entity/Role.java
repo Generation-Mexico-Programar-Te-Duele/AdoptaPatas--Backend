@@ -14,7 +14,7 @@ import lombok.*;
 @Getter
 @ToString
 @Entity
-@Table(name="role")
+@Table(name="user_role")
 public class Role {
 	
 	@Id 

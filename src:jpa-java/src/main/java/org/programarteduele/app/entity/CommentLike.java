@@ -11,7 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 
-@Table(name = "post_comment_likes")
+@Table(name = "comment_likes")
 public class CommentLike {
 
 	@Id
@@ -21,10 +21,10 @@ public class CommentLike {
 
 	@ManyToOne()
 	@JsonIgnore
-	@JoinColumn(name = "comment_id")
+	@JoinColumn(name = "liked_comment_id")
 	private Comment comment;
 
 	@ManyToOne()
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "comment_liker_user_id")
 	private User user;
 }

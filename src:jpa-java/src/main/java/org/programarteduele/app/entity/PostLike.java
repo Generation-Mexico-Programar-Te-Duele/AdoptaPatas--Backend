@@ -11,7 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "post_likes")
-public class PostLikes {
+public class PostLike {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,11 +19,11 @@ public class PostLikes {
     private int id;
 
     @ManyToOne()
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_liker_id")
     private User user;
 
     @ManyToOne()
-    @JoinColumn(name = "post_id")
+    @JoinColumn(name = "liked_post_id")
     @JsonIgnore
     private Post post;
 }

@@ -1,10 +1,9 @@
 package org.programarteduele.app.entity;
 
 import java.sql.Timestamp;
-import java.util.Date;
-import java.util.Set;
+import java.util.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.*;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -36,7 +35,7 @@ public class User {
 	private String password;
 	@Column(name="registered_at",columnDefinition="DATETIME DEFAULT CURRENT_TIMESTAMP", nullable=false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date registrationTime;
+	private Date registrationDate;
 	@Column(name="updated_at",columnDefinition="DATETIME DEFAULT CURRENT_TIMESTAMP")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedTime;
@@ -85,9 +84,36 @@ public class User {
 	
 	// Un usuario puede tener muchas publicaciones
 	// Relacion Bidireccional con "post"
+	// -Properties annotated with @JsonProperty(access = Access.WRITE_ONLY)
+	// will not be included while serializing (Java object to JSON in this case) the object
+	// that contains them.
 	@OneToMany(mappedBy="user")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Set<Post> posts;
 	
+	// Un usuario puede realizar muchos comentarios
+	// Relacion Bidireccional con "comment"
+	@OneToMany(mappedBy = "user")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private List<Comment> postComments;
+
+	// Un usuario puede dar like a muchas publicaciones
+	// Relacion Bidireccional con "post_likes"
+	@OneToMany(mappedBy = "user")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private List<PostLike> postLikes;
+	
+	// Un usuario puede dar like a muchos comentarios
+	// Relacion Bidireccional con "comment_likes"
+	@OneToMany(mappedBy = "user")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private List<CommentLike> commentLikes;
+	
+	// Un usuario puede tener muchas notificaciones
+	// Relacion Bidireccional con "notifications"
+	@OneToMany(mappedBy = "user")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private List<Notification> notification;
 	
 	
 	
