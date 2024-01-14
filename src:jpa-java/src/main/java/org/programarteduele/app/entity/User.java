@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -50,18 +52,20 @@ public class User {
 	private String profilePicture;
 	@Column(name="bio")
 	private String bioDescription;
-	@Column(name="role", nullable=false, length=25)
-	private String userRole;
-	@Column(name="user_type", nullable=false, length=45)
-	private String userType;
 	@Column(name="date_of_birth",columnDefinition="DATETIME DEFAULT CURRENT_TIMESTAMP", nullable=false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Timestamp birthDate;
 	
+	// Relación con tabla de rol de usuario
+	@ManyToOne
+	@JoinColumn(name="user_role", nullable=false )
+	@JsonIgnoreProperties("description")
+	private Role role;
+	
 	// Creación de la tabla follower a partir de @JoinTable con @JoinColumn para atribuir
 	// nombres a las columnas 
 	
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(joinColumns = { @JoinColumn(name = "following_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "followers_id") })
 	private Set<User> following;

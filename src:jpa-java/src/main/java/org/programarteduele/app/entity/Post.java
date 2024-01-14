@@ -11,7 +11,7 @@ import lombok.*;
 @Getter
 @ToString
 @Entity
-@Table(name="post")
+@Table(name="user_post")
 public class Post {
 	
 	@Id 

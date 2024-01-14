@@ -1,6 +1,5 @@
 package org.programarteduele.app.entity;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 import jakarta.persistence.*;
