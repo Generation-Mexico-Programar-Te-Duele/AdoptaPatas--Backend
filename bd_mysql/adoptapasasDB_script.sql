@@ -5,6 +5,9 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
 -- Schema adoptapatas
 -- -----------------------------------------------------
 
@@ -19,17 +22,19 @@ USE `adoptapatas` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `adoptapatas`.`user_type` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
-  `user_type` VARCHAR(45) NOT NULL DEFAULT 'Individual' CHECK (user_type IN ('Individual', 'Shelter')),
-  `role` VARCHAR(25) NOT NULL DEFAULT 'Adopter' CHECK (role IN ('Adopter', 'PetPoster')),
+  `user_type` VARCHAR(45) NOT NULL DEFAULT 'Individual',
+  `role` VARCHAR(25) NOT NULL DEFAULT 'Adopter',
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   UNIQUE INDEX `user_type_UNIQUE` (`user_type` ASC) VISIBLE)
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 3
+DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
 -- Table `adoptapatas`.`user`
--- -----------------------------------------------------
+-- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `adoptapatas`.`user` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `first_name` VARCHAR(65) NOT NULL,
@@ -45,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `adoptapatas`.`user` (
   `state` VARCHAR(45) NOT NULL,
   `profile_picture` VARCHAR(255) NULL DEFAULT NULL,
   `bio` TINYTEXT NULL DEFAULT NULL,
-  `user_type_id` BIGINT NOT NULL DEFAULT 1,
+  `user_type_id` BIGINT NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
   UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE,
@@ -53,11 +58,9 @@ CREATE TABLE IF NOT EXISTS `adoptapatas`.`user` (
   INDEX `fk_user_user_type1_idx` (`user_type_id` ASC) VISIBLE,
   CONSTRAINT `fk_user_user_type1`
     FOREIGN KEY (`user_type_id`)
-    REFERENCES `adoptapatas`.`user_type` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `adoptapatas`.`user_type` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 18
+AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = utf8mb3;
 
 
