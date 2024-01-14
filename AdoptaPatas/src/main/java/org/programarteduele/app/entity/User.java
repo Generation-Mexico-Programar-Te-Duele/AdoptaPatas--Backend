@@ -1,6 +1,6 @@
 package org.programarteduele.app.entity;
 
-import java.sql.Timestamp;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -44,10 +44,15 @@ public class User {
 	private String city;
 	@Column(name="state", nullable=false, length=45)
 	private String state;
-	@Column(name="role", nullable=false, length=45)
-	private String role;
-	@Column(name="user_type", nullable=false, length=45)
-	private String userType;
+	@Column(name="profile_picture", length=255)
+	private String porfilePicture;
+	@Column(name="bio")
+	private String bio;
+	@ManyToOne
+	@JoinColumn(name="user_type_id", nullable=false)
+	//@JsonIgnoreProperties("role")
+	private UserType userType;
+	
 	
 }
 

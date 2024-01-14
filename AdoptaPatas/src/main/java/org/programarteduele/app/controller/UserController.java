@@ -12,7 +12,7 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("api/v1/users")
+@RequestMapping("adoptapatas/v1/users")
 public class UserController {
 	
 	@Autowired
@@ -40,7 +40,7 @@ public class UserController {
 		return newUser;
 	}
 	
-	@GetMapping("query") // localhost:8080/api/v1/users/query?email=jose@gmail.com
+	@GetMapping("query") // localhost:8080/adoptapatas/v1/users/query?email=jose@gmail.com
 	User getUserByEmail(@RequestParam(name="email") String email) {
 		return userService.getUserByEmail(email);
 	}

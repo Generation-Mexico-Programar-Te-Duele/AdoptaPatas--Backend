@@ -1,62 +1,15 @@
 -- Inserción de datos en tabla user
 SELECT * FROM user;
+
+
 -- User 1
-INSERT INTO user (first_name, last_name, username, age, email, phone, 
-				password_hash, street_name, city, state, zip_code, profile_picture, bio)
-		VALUES ('John', 'Doe', 'john_pet', 43, 'john@example.com','128467365', 'hashed_password_1','Alabama St 3',
-				'Agustos', 'Alabama', '55331','profile1.jpg', 'Looking forward to adopt a pet!');
--- User 2
-INSERT INTO user (first_name, last_name, username, age, email, phone, 
-                password_hash, street_name, city, state, zip_code, profile_picture, bio)
-VALUES ('Jane', 'Smith', 'jane_animallover', 27, 'jane@example.com','987654321', 'hashed_password_2',
-        'Maple Ave 15', 'Springfield', 'Illinois', '62701', 'profile2.jpg', 'Passionate about animal welfare!');
-
--- User 3
-INSERT INTO user (first_name, last_name, username, age, email, phone, 
-                password_hash, street_name, city, state, zip_code, profile_picture, bio)
-VALUES ('Alice', 'Johnson', 'alice_pawprints', 24, 'alice@example.com','555123456', 'hashed_password_3',
-        'Oak St 7', 'Barksville', 'California', '90210', 'profile3.jpg', 'Rescuing pets is my mission!');
-
--- User 4
-INSERT INTO user (first_name, last_name, username, age, email, phone, 
-                password_hash, street_name, city, state, zip_code, profile_picture, bio)
-VALUES ('Bob', 'Williams', 'bob_furryfriends', 19, 'bob@example.com','123456789', 'hashed_password_4',
-        'Cedar Ln 22', 'Pawsburg', 'New York', '10001', 'profile4.jpg', 'Animal enthusiast seeking companionship.');
-
--- User 5
-INSERT INTO user (first_name, last_name, username, age, email, phone, 
-                password_hash, street_name, city, state, zip_code, profile_picture, bio)
-VALUES ('Emma', 'Taylor', 'emma_petpal', 23, 'emma@example.com','111222333', 'hashed_password_5',
-        'Pine St 10', 'Furville', 'Texas', '75001', 'profile5.jpg', 'Creating a home for furry friends!');
+INSERT INTO user (first_name, last_name, username, age, email, phone, password_hash, city, state, profile_picture, bio)
+		VALUES ('John', 'Doe', 'john_pet', 43, 'john@example.com','128467365', 'hashed_password_1','Agustos', 'Alabama','profile1.jpg', 'Looking forward to adopt a pet!');
         
 -- Adding Users who are registered as shelters
 -- User as shelter 1
-INSERT INTO user (first_name, last_name, username, age, email, phone, 
-                password_hash, street_name, city, state, zip_code, profile_picture, bio, role, user_type)
-VALUES ('Michael', 'Anderson', 'mike_pawlover', 18, 'michael@example.com','555678912', 'hashed_password_6',
-        'Oakwood Blvd 18', 'Pawsville', 'Florida', '33101', 'profile6.jpg', 'Adopting pets brings joy to my life!', 'PetPoster', 'Shelter');
+INSERT INTO user (first_name, last_name, username, age, email, phone, password_hash, city, state, profile_picture, bio, user_type_rol)
+	VALUES ('Sarah', 'Johnson', 'sarah_furbuddie', 25, 'sara@example.com','123987654', 'hashed_password_7', 'Furrytown', 'Texas', 'profile7.jpg', 'Fostering pets and making a difference.', 'PetPoster', 'Shelter');
 
--- User as shelter 2
-INSERT INTO user (first_name, last_name, username, age, email, phone, 
-                password_hash, street_name, city, state, zip_code, profile_picture, bio, role, user_type)
-VALUES ('Sarah', 'Johnson', 'sarah_furbuddies', 25, 'sarah@example.com','123987654', 'hashed_password_7',
-        'Cedar Ave 5', 'Furrytown', 'Texas', '75002', 'profile7.jpg', 'Fostering pets and making a difference.', 'PetPoster', 'Shelter');
-
--- User as shelter 3
-INSERT INTO user (first_name, last_name, username, age, email, phone, 
-                password_hash, street_name, city, state, zip_code, profile_picture, bio, role, user_type)
-VALUES ('Chris', 'Williams', 'chris_petrescuer', 35, 'chris@example.com','987654321', 'hashed_password_8',
-        'Maple St 12', 'Pawstropolis', 'California', '90211', 'profile8.jpg', 'Rescuing pets is a lifelong commitment.', 'PetPoster', 'Shelter');
-
--- User as shelter 4
-INSERT INTO user (first_name, last_name, username, age, email, phone, 
-                password_hash, street_name, city, state, zip_code, profile_picture, bio, role, user_type)
-VALUES ('Olivia', 'Davis', 'olivia_animaladvocate', 20, 'olivia@example.com','111222333', 'hashed_password_9',
-        'Birch Ln 8', 'Furville', 'New York', '10002', 'profile9.jpg', 'Advocating for the well-being of animals.', 'PetPoster', 'Shelter');
-
--- User as shelter 5
-INSERT INTO user (first_name, last_name, username, age, email, phone, 
-                password_hash, street_name, city, state, zip_code, profile_picture, bio, role, user_type)
-VALUES ('Daniel', 'Garcia', 'daniel_petsupporter', 18, 'daniel@example.com','555444666', 'hashed_password_10',
-        'Willow St 25', 'Pawhaven', 'Arizona', '85001', 'profile10.jpg', 'Supporting pet adoption and care initiatives.', 'PetPoster', 'Shelter');
-
+-- Eliminar todos los datos y resetear el valor de id a 1.
+-- TRUNCATE TABLE user; 
