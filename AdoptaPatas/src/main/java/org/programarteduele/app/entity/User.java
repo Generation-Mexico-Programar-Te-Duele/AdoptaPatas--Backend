@@ -1,6 +1,10 @@
 package org.programarteduele.app.entity;
 
+import java.time.LocalDateTime;
 import java.util.*;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.*;
@@ -34,12 +38,18 @@ public class User {
 	private String phone;
 	@Column(name="password_hash", nullable=false, length=45)
 	private String password;
-	@Column(name="registered_at",columnDefinition="DATETIME DEFAULT CURRENT_TIMESTAMP", nullable=false)
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date registrationDate;
-	@Column(name="updated_at",columnDefinition="DATETIME DEFAULT CURRENT_TIMESTAMP")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date updatedTime;
+//	@Column(name="registered_at",columnDefinition="DATETIME DEFAULT CURRENT_TIMESTAMP", nullable=false)
+//	@Temporal(TemporalType.TIMESTAMP)
+//	private Date registrationDate;
+//	@Column(name="updated_at",columnDefinition="DATETIME DEFAULT CURRENT_TIMESTAMP")
+//	@Temporal(TemporalType.TIMESTAMP)
+//	private Date updatedTime;
+	@Column(name="registered_at",updatable = false)
+	@CreationTimestamp
+	private LocalDateTime registrationDate;
+	@Column(name="updated_at")
+	@UpdateTimestamp
+	private LocalDateTime updatedAt;
 	@Column(name="city", nullable=false, length=45)
 	private String city;
 	@Column(name="state", nullable=false, length=45)
@@ -55,58 +65,58 @@ public class User {
 	private Role userType;
 	
 	// Creación de la tabla follower a partir de @JoinTable con @JoinColumn para atribuir
-		// nombres a las columnas 
+	// nombres a las columnas 
 		
-		@ManyToMany(fetch = FetchType.EAGER)
-		@JoinTable(joinColumns = { @JoinColumn(name = "following_id") }, inverseJoinColumns = {
-				@JoinColumn(name = "followers_id") })
-		private Set<User> following;
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(joinColumns = { @JoinColumn(name = "following_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "followers_id") })
+	private Set<User> following;
 
-		@ManyToMany(mappedBy = "following", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-		private Set<User> followers;
-		
-		// Un usuario puede publicar muchas mascotas
-		// Relacion Bidireccional con "pet"
-		@OneToMany(mappedBy = "user")
-		private Set<Pet> pets;
-		
-		// Un usuario puede realizar varias solicitudes de adopción
-		// Relacion Bidireccional con "adoption_inqiry"
-		@OneToMany(mappedBy = "user")
-		private Set<AdoptionInquiry> adoptionInquiries;
-		
-		// Un usuario puede tener muchas publicaciones
-		// Relacion Bidireccional con "post"
-		// -Properties annotated with @JsonProperty(access = Access.WRITE_ONLY)
-		// will not be included while serializing (Java object to JSON in this case) the object
-		// that contains them.
-		@OneToMany(mappedBy="user")
-		@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-	    private Set<Post> posts;
-		
-		// Un usuario puede realizar muchos comentarios
-		// Relacion Bidireccional con "comment"
-		@OneToMany(mappedBy = "user")
-		@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-		private List<Comment> postComments;
+	@ManyToMany(mappedBy = "following", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	private Set<User> followers;
+	
+	// Un usuario puede publicar muchas mascotas
+	// Relacion Bidireccional con "pet"
+	@OneToMany(mappedBy = "user")
+	private Set<Pet> pets;
+	
+	// Un usuario puede realizar varias solicitudes de adopción
+	// Relacion Bidireccional con "adoption_inqiry"
+	@OneToMany(mappedBy = "user")
+	private Set<AdoptionInquiry> adoptionInquiries;
+	
+	// Un usuario puede tener muchas publicaciones
+	// Relacion Bidireccional con "post"
+	// -Properties annotated with @JsonProperty(access = Access.WRITE_ONLY)
+	// will not be included while serializing (Java object to JSON in this case) the object
+	// that contains them.
+	@OneToMany(mappedBy="user")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Set<Post> posts;
+	
+	// Un usuario puede realizar muchos comentarios
+	// Relacion Bidireccional con "comment"
+	@OneToMany(mappedBy = "user")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private List<Comment> postComments;
 
-		// Un usuario puede dar like a muchas publicaciones
-		// Relacion Bidireccional con "post_likes"
-		@OneToMany(mappedBy = "user")
-		@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-		private List<PostLike> postLikes;
-		
-		// Un usuario puede dar like a muchos comentarios
-		// Relacion Bidireccional con "comment_likes"
-		@OneToMany(mappedBy = "user")
-		@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-		private List<CommentLike> commentLikes;
-		
-		// Un usuario puede tener muchas notificaciones
-		// Relacion Bidireccional con "notifications"
-		@OneToMany(mappedBy = "user")
-		@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-		private List<Notification> notification;
+	// Un usuario puede dar like a muchas publicaciones
+	// Relacion Bidireccional con "post_likes"
+	@OneToMany(mappedBy = "user")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private List<PostLike> postLikes;
+	
+	// Un usuario puede dar like a muchos comentarios
+	// Relacion Bidireccional con "comment_likes"
+	@OneToMany(mappedBy = "user")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private List<CommentLike> commentLikes;
+	
+	// Un usuario puede tener muchas notificaciones
+	// Relacion Bidireccional con "notifications"
+	@OneToMany(mappedBy = "user")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private List<Notification> notification;
 	
 	
 }
