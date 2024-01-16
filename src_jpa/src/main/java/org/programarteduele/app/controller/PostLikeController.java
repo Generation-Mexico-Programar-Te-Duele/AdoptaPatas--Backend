@@ -7,7 +7,7 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/post-likes")
+@RequestMapping("adoptapatas/v1/post-likes")
 public class PostLikeController {
 
 	 	@Autowired

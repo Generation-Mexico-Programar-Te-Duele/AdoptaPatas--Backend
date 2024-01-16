@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/notification-types")
+@RequestMapping("adoptapatas/v1/notification-types")
 public class NotificationTypeController {
 
     @Autowired

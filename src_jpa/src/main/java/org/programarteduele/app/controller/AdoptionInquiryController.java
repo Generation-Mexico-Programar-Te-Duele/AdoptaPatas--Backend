@@ -9,7 +9,7 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/adoption-inquiries")
+@RequestMapping("adoptapatas/v1/adoption-inquiries")
 public class AdoptionInquiryController {
 
     @Autowired

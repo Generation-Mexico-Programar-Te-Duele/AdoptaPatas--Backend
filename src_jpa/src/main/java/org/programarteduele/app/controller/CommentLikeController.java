@@ -7,7 +7,7 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/comment-likes")
+@RequestMapping("adoptapatas/v1/comment-likes")
 public class CommentLikeController {
 
 	@Autowired
