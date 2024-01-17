@@ -1,9 +1,12 @@
 package org.programarteduele.app.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.CreationTimestamp;
+
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -25,18 +28,20 @@ public class Comment {
     private String commentContent;
 
     @Column(name = "date_posted" ,columnDefinition="DATETIME DEFAULT CURRENT_TIMESTAMP", nullable=false)
-	@Temporal(TemporalType.TIMESTAMP)
-    private Date date;
+    @CreationTimestamp
+    private LocalDate date;
     
     //Muchos comentarios pueden ser hechos por un usuario
     @ManyToOne() 
     @JoinColumn(name = "comment_user_id")
+    @JsonIgnoreProperties({"age", "email","phone","password","registrationDate","updatedAt","city","state","porfilePicture", 
+		"bio","userType","following","followers","pets","adoptionInquiries"})
     private User user;
 
     //Muchos comentarios pueden ser hechos en una publicación 
     @ManyToOne() 
     @JoinColumn(name = "source_post_id")
-    @JsonIgnore
+    @JsonIgnoreProperties({"user","postContent", "createdAt", "postImage","postLikes", "postComments"})
     private Post post;
 
     // Un comentario puede tener muchos likes 

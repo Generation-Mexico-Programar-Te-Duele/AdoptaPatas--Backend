@@ -24,38 +24,45 @@ public class User {
 	@Id //Indica que el atributo será la clave primaria de la entidad
 	@GeneratedValue(strategy=GenerationType.IDENTITY) //Indica como se generan automaticamente las llaves primarias.
 	private Long id;
+	
 	@Column(name="first_name", nullable=false, length=65)
 	private String firstName; //Los tipo String son como VARCHAR en MySQL
+	
 	@Column(name="last_name", nullable=false, length=65)
 	private String lastName;
+	
 	@Column(name="username", nullable=false, length=50, unique=true)
 	private String username;
+	
 	@Column(name="age", nullable=false)
 	private int age;
+	
 	@Column(name="email", nullable=false, length=100, unique=true)
 	private String email;
+	
 	@Column(name="phone", nullable=false, length=16)
 	private String phone;
+	
 	@Column(name="password_hash", nullable=false, length=45)
 	private String password;
-//	@Column(name="registered_at",columnDefinition="DATETIME DEFAULT CURRENT_TIMESTAMP", nullable=false)
-//	@Temporal(TemporalType.TIMESTAMP)
-//	private Date registrationDate;
-//	@Column(name="updated_at",columnDefinition="DATETIME DEFAULT CURRENT_TIMESTAMP")
-//	@Temporal(TemporalType.TIMESTAMP)
-//	private Date updatedTime;
+	
 	@Column(name="registered_at",updatable = false)
 	@CreationTimestamp
 	private LocalDateTime registrationDate;
+	
 	@Column(name="updated_at")
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
+	
 	@Column(name="city", nullable=false, length=45)
 	private String city;
+	
 	@Column(name="state", nullable=false, length=45)
 	private String state;
+	
 	@Column(name="profile_picture", length=255)
 	private String porfilePicture;
+	
 	@Column(name="bio")
 	private String bio;
 	

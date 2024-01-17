@@ -1,10 +1,11 @@
 package org.programarteduele.app.repository;
 
-import org.programarteduele.app.entity.NotificationType;
+
+import org.programarteduele.app.entity.Notification;
 import org.springframework.data.repository.CrudRepository;
 
 
-public interface NotificationRepository extends CrudRepository<NotificationType, Long>{
+public interface NotificationRepository extends CrudRepository<Notification, Long>{
       
 
 }

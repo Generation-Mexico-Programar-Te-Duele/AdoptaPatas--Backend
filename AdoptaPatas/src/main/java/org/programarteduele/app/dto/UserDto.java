@@ -1,5 +1,7 @@
 package org.programarteduele.app.dto;
 
+import org.programarteduele.app.entity.Role;
+
 import lombok.*;
 
 @Getter
@@ -22,6 +24,9 @@ public class UserDto {
 	
 	private String phone;
 	
+	private String bio;
 	
-
+	private String porfilePicture;
+	
+	private Role userType;
 }

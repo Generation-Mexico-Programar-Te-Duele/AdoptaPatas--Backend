@@ -1,7 +1,11 @@
 package org.programarteduele.app.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -21,17 +25,20 @@ public class Post {
 	
 	@ManyToOne // Muchas publicaciones pueden ser hechas por un usuario
 	@JoinColumn(name = "user_author_id", referencedColumnName = "id", nullable=false)
+	@JsonIgnoreProperties({"age", "email","phone","password","registrationDate","updatedAt","city","state","porfilePicture", 
+		"bio","userType","following","followers","pets","adoptionInquiries"})
 	private User user;
 	
 	@Column(name="content", columnDefinition="TINYTEXT")
 	private String postContent;
 	
-	@Column(name="createdAt",columnDefinition="DATETIME DEFAULT CURRENT_TIMESTAMP")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date createdAt;
+	@Column(name="createdAt")
+	@CreationTimestamp
+	private LocalDateTime createdAt;
 	
 	@Column(name="image", length=255)
 	private String postImage;
+	
 	
 	@OneToMany(mappedBy = "post")
     private List<PostLike> postLikes;

@@ -64,6 +64,9 @@ public class UserDtoServiceImpl implements UserDtoService {
 		userDto.setAge(  user.getAge() );
 		userDto.setEmail( user.getEmail() );
 		userDto.setPhone( user.getPhone() );
+		userDto.setBio(user.getBio());
+		userDto.setPorfilePicture(user.getPorfilePicture());
+		userDto.setUserType(user.getUserType());
 		return userDto;
 	}
 
