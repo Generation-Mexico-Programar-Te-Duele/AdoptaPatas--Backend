@@ -3,6 +3,7 @@ package org.programarteduele.app.service.impl;
 import java.util.List;
 
 import org.programarteduele.app.entity.Post;
+import org.programarteduele.app.entity.User;
 import org.programarteduele.app.repository.PostRepository;
 import org.programarteduele.app.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,14 @@ public class PostServiceImpl implements PostService {
 	
 	@Override
 	public Post createPost(Post post) {
+		post.setActive(true);
 		return postRepository.save(post);
 	}
 	
 	@Override
 	public List<Post> getAllPosts() {
-		return (List<Post>) postRepository.findAll();
+		List<Post> posts = (List<Post>) postRepository.findAllByActive(true);
+		return  posts;
 	}
 
 	@Override
@@ -42,7 +45,8 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public void deletePost(Long id) {
 		Post existingPost = getPostById(id);
-		postRepository.delete(existingPost);		
+		existingPost.setActive(false);
+		postRepository.save(existingPost);		
 	}
 	
 

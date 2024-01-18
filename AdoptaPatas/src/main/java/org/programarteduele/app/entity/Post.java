@@ -28,16 +28,15 @@ public class Post {
 	@JsonIgnoreProperties({"age", "email","phone","password","registrationDate","updatedAt","city","state","porfilePicture", 
 		"bio","userType","following","followers","pets","adoptionInquiries"})
 	private User user;
-	
 	@Column(name="content", columnDefinition="TINYTEXT")
 	private String postContent;
-	
 	@Column(name="createdAt", updatable = false)
 	@CreationTimestamp
 	private LocalDateTime createdAt;
-	
 	@Column(name="image", length=255)
 	private String postImage;
+	@Column(name="activo")
+	private boolean active;
 	
 	
 	@OneToMany(mappedBy = "post")

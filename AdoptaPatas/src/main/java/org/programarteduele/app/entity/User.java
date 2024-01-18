@@ -52,6 +52,8 @@ public class User {
 	private String porfilePicture;
 	@Column(name="bio")
 	private String bio;
+	@Column(name="activo")
+	private boolean active;
 	
 	@ManyToOne
 	@JoinColumn(name="user_role", nullable=false)
