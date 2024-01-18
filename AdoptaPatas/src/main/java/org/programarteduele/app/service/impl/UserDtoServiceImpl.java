@@ -66,7 +66,7 @@ public class UserDtoServiceImpl implements UserDtoService {
 		userDto.setPhone( user.getPhone() );
 		userDto.setBio(user.getBio());
 		userDto.setPorfilePicture(user.getPorfilePicture());
-		userDto.setUserType(user.getUserType());
+		userDto.setRole(user.getRole());
 		return userDto;
 	}
 

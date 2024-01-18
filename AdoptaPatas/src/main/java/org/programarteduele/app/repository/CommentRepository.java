@@ -8,6 +8,6 @@ import org.programarteduele.app.entity.Post;
 import org.springframework.data.repository.CrudRepository;
 
 
-public interface CommentRepository extends CrudRepository<Comment, Integer>{
-	List<Comment> findByPostId(int postId);
+public interface CommentRepository extends CrudRepository<Comment, Long>{
+	List<Comment> findByPostId(Long postId);
 }

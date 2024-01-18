@@ -32,7 +32,7 @@ public class Post {
 	@Column(name="content", columnDefinition="TINYTEXT")
 	private String postContent;
 	
-	@Column(name="createdAt")
+	@Column(name="createdAt", updatable = false)
 	@CreationTimestamp
 	private LocalDateTime createdAt;
 	

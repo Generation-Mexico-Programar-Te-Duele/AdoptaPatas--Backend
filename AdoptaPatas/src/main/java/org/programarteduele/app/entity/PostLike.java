@@ -16,7 +16,7 @@ public class PostLike {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private int id;
+    private Long id;
 
     @ManyToOne()
     @JoinColumn(name = "user_liker_id")

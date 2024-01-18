@@ -19,7 +19,7 @@ public class CommentServiceImpl implements CommentService {
 	
 
 	@Override
-	public Comment getCommentById(Integer id) {
+	public Comment getCommentById(Long id) {
 		return commentRepository.findById(id)
 				.orElseThrow( ()-> new IllegalStateException("Comment does not exist with id " + id));
 	}
@@ -35,7 +35,7 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public Comment updateComment(Comment comment, Integer id) {
+	public Comment updateComment(Comment comment, Long id) {
 		Comment existingComment = getCommentById(id);
 		existingComment.setCommentContent( comment.getCommentContent() );
 		return commentRepository.save(existingComment);
@@ -43,13 +43,13 @@ public class CommentServiceImpl implements CommentService {
 	
 	
 	@Override
-	public void deleteComment(Integer id) {
+	public void deleteComment(Long id) {
 		Comment existingComment = getCommentById(id);
 		commentRepository.delete(existingComment);		
 	}
 	
 	@Override
-    public List<Comment> getCommentsByPostId(int postId) {
+    public List<Comment> getCommentsByPostId(Long postId) {
         return commentRepository.findByPostId(postId);
     }
 

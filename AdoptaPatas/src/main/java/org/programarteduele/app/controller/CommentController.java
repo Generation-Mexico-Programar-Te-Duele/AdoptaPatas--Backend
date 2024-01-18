@@ -41,14 +41,14 @@ public class CommentController {
 	}
 	
 	@GetMapping("{id}")
-	Comment getCommentById(@PathVariable("id") Integer id) {
+	Comment getCommentById(@PathVariable("id") Long id) {
 		log.info("Se solicita los datos del id:" + id);
 		Comment comment = commentService.getCommentById(id);
 		return comment;
 	}
 	
 	 @GetMapping("/post/{postId}")
-	    public List<Comment> getCommentsByPostId(@PathVariable int postId) {
+	    public List<Comment> getCommentsByPostId(@PathVariable Long postId) {
 	        return commentService.getCommentsByPostId(postId);
 	    }
 

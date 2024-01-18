@@ -26,8 +26,8 @@ public class Role {
 	@Column(name="id")
 	private Long id;
 	@Column(name="user_type", nullable=false, length=70)
-	private String userType;
+	private String name;
 	@Column(name="role", nullable=true, length=70)	
-	private String role;
+	private String description;
 
 }

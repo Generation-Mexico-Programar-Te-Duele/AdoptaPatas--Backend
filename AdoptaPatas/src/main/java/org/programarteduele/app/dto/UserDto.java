@@ -28,5 +28,5 @@ public class UserDto {
 	
 	private String porfilePicture;
 	
-	private Role userType;
+	private Role role;
 }

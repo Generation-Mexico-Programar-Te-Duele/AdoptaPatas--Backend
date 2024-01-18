@@ -39,7 +39,7 @@ public class Notification {
     @JoinColumn(name = "comment_id", referencedColumnName = "id")
     private Comment comment;
     
-    @Column(name = "is_readed", nullable = false)
+    @Column(name = "is_readed", updatable = false)
     private boolean isReaded;
 
     @Column(name = "received_at",columnDefinition="DATETIME DEFAULT CURRENT_TIMESTAMP")

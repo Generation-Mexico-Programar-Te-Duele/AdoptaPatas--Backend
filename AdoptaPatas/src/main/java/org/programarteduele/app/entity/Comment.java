@@ -22,12 +22,12 @@ public class Comment {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private int id;
+    private Long id;
 
     @Column(name = "content")
     private String commentContent;
 
-    @Column(name = "date_posted" ,columnDefinition="DATETIME DEFAULT CURRENT_TIMESTAMP", nullable=false)
+    @Column(name = "date_posted" , updatable = false)
     @CreationTimestamp
     private LocalDate date;
     

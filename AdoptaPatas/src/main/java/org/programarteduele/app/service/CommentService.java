@@ -7,11 +7,11 @@ import org.programarteduele.app.entity.Post;
 
 public interface CommentService {
 	
-	Comment getCommentById(Integer id);
+	Comment getCommentById(Long id);
 	Comment createComment(Comment comment);
 	List<Comment> getAllComments();
-	List<Comment> getCommentsByPostId(int postId);
-	Comment updateComment(Comment comment, Integer id);
-	void deleteComment(Integer id);
+	List<Comment> getCommentsByPostId(Long postId);
+	Comment updateComment(Comment comment, Long id);
+	void deleteComment(Long id);
 
 }

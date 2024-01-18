@@ -17,7 +17,7 @@ public class CommentLike {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private Long id;
 
 	@ManyToOne()
 	@JsonIgnore
