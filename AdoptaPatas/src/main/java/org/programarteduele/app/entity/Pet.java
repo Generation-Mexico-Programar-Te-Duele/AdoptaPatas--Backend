@@ -1,5 +1,6 @@
 package org.programarteduele.app.entity;
 
+import java.time.LocalDateTime;
 import java.util.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
@@ -29,17 +30,17 @@ public class Pet {
 	private String breed;
 	@Column(name="color", nullable=false, length=30)
 	private String color;
-	@Column(name="characteristics", columnDefinition="TINYTEXT")
+	@Column(name="characteristics", columnDefinition="TEXT")
 	private String characteristics;
 	@Column(name="description", columnDefinition="TEXT", nullable=false)
 	private String description;
 	@Column(name="pet_image", nullable=false, length=255)
 	private String petImage;
-	@Column(name="health_condition", columnDefinition="TINYTEXT", nullable=false)
+	@Column(name="health_condition", columnDefinition="TEXT", nullable=false)
 	private String healthCondition;
-	@Column(name="date_added", columnDefinition="DATETIME DEFAULT CURRENT_TIMESTAMP", nullable=false)
+	@Column(name="date_added", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP", nullable=false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateAdded;
+	private LocalDateTime dateAdded;
 	
 	
 	@ManyToOne

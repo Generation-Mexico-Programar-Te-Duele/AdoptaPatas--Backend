@@ -19,7 +19,7 @@ import lombok.*;
 @Getter
 @ToString
 @Entity
-@Table(name="user")
+@Table(name="usuario")
 public class User {
 	@Id //Indica que el atributo será la clave primaria de la entidad
 	@GeneratedValue(strategy=GenerationType.IDENTITY) //Indica como se generan automaticamente las llaves primarias.

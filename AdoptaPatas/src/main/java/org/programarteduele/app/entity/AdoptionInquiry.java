@@ -1,6 +1,6 @@
 package org.programarteduele.app.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
 import lombok.*;;
@@ -29,8 +29,8 @@ public class AdoptionInquiry {
 	@Column(name="status", nullable=false, length=45)
 	private String status;
 	
-	@Column(name="date_started", columnDefinition="DATETIME DEFAULT CURRENT_TIMESTAMP", nullable=false)
+	@Column(name="date_started", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP", nullable=false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateStarted;
+	private LocalDateTime dateStarted;
 
 }

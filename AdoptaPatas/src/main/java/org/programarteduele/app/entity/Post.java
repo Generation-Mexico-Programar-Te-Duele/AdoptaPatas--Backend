@@ -28,7 +28,7 @@ public class Post {
 	@JsonIgnoreProperties({"age", "email","phone","password","registrationDate","updatedAt","city","state","porfilePicture", 
 		"bio","userType","following","followers","pets","adoptionInquiries"})
 	private User user;
-	@Column(name="content", columnDefinition="TINYTEXT")
+	@Column(name="content", columnDefinition="TEXT")
 	private String postContent;
 	@Column(name="createdAt", updatable = false)
 	@CreationTimestamp

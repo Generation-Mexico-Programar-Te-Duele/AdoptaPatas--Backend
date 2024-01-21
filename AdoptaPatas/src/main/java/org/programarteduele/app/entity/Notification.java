@@ -1,6 +1,6 @@
 package org.programarteduele.app.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -42,12 +42,12 @@ public class Notification {
     @Column(name = "is_readed", updatable = false)
     private boolean isReaded;
 
-    @Column(name = "received_at",columnDefinition="DATETIME DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "received_at",columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	@Temporal(TemporalType.TIMESTAMP)
-    private Date receivedAt;
+    private LocalDateTime receivedAt;
 
-    @Column(name = "read_at",columnDefinition="DATETIME DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "read_at",columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	@Temporal(TemporalType.TIMESTAMP)
-    private Date readAt;
+    private LocalDateTime readAt;
 
 }

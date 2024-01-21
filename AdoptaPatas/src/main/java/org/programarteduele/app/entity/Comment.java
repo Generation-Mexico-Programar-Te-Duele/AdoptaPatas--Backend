@@ -1,6 +1,6 @@
 package org.programarteduele.app.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -29,7 +29,7 @@ public class Comment {
 
     @Column(name = "date_posted" , updatable = false)
     @CreationTimestamp
-    private LocalDate date;
+    private LocalDateTime date;
     
     //Muchos comentarios pueden ser hechos por un usuario
     @ManyToOne() 
